@@ -286,6 +286,55 @@
       </svg>
     </div>
 
+    <button id="wifiButton">Connect to Wi-Fi</button>
+
+    <script>
+      document
+        .getElementById("wifiButton")
+        .addEventListener("click", function () {
+          // This feature is supported only on HTTPS websites and in browsers that support the Web Bluetooth API.
+          if (navigator.bluetooth) {
+            const ssid = "Redmi";
+            const password = "123456789com";
+
+            // Connect to Wi-Fi (This is a simplified version. Actual implementation may vary.)
+            navigator.bluetooth
+              .requestDevice({
+                filters: [
+                  {
+                    services: ["wifi"],
+                  },
+                ],
+              })
+              .then((device) => {
+                return device.gatt.connect();
+              })
+              .then((server) => {
+                return server.getPrimaryService("wifi");
+              })
+              .then((service) => {
+                return service.getCharacteristic("ssid");
+              })
+              .then((characteristic) => {
+                let enc = new TextEncoder();
+                return characteristic.writeValue(enc.encode(ssid));
+              })
+              .then(() => {
+                return service.getCharacteristic("password");
+              })
+              .then((characteristic) => {
+                let enc = new TextEncoder();
+                return characteristic.writeValue(enc.encode(password));
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            alert("Your browser does not support the Web Bluetooth API");
+          }
+        });
+    </script>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
     <script src="js/popper.min.js"></script>
