@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        margin: 20px 0;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      input[type="text"],
+      input[type="email"],
+      button {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1em;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Subscribe to Our Newsletter</h1>
+      <p>Stay updated with our latest news and offers.</p>
+      <form id="subscriptionForm">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="responseMessage"></p>
+    </div>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyn9oiTdO0CU3UT3m8tLoSz_KEKt_bZU4__1Y4phXz3g8NfxdI5svYTnvoOoxuckB_Lag/exec";
+      const form = document.getElementById("subscriptionForm");
+      const responseMessage = document.getElementById("responseMessage");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then(
+            (response) =>
+              (responseMessage.innerHTML = "Thank you for subscribing!")
+          )
+          .catch(
+            (error) =>
+              (responseMessage.innerHTML =
+                "An error occurred. Please try again.")
+          );
+      });
+    </script>
+  </body>
+</html>
