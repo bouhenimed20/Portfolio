@@ -69,7 +69,11 @@
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
+          mode: "no-cors", // Add the 'mode' option here
+        })
           .then(
             (response) =>
               (responseMessage.innerHTML = "Thank you for subscribing!")
