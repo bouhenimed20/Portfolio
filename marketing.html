@@ -1,353 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bouheni Mohamed</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offer Table Form</title>
     <style>
-      /* Additional CSS styles for the form */
-      .services {
-        position: relative;
-        overflow: hidden;
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
       }
-
-      .services .service-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        margin-bottom: 15px;
-      }
-
-      .services .service-form {
-        display: none;
+      .offer-container {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 350px;
         padding: 20px;
-        background-color: #f8f9fa;
+        text-align: center;
       }
-
-      .services .service-form.show {
+      .tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .tab {
+        flex: 1;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+      }
+      .tab.active {
+        border-bottom: 2px solid #ff5722;
+        font-weight: bold;
+      }
+      .offers {
+        display: none;
+      }
+      .offers.active {
         display: block;
       }
-
-      .alert-message {
-        margin-top: 10px;
-        display: none;
-        color: white;
-        background-color: red;
-        padding: 10px;
-        border-radius: 5px;
+      .offer {
+        display: inline-block;
+        width: 30%;
+        margin: 5px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
       }
-
-      .fb-message {
-        margin-top: 10px;
-        display: none;
-        color: green;
+      .offer.selected {
+        border-color: #ff5722;
+        background-color: #ffebee;
+      }
+      .badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #ff5722;
+        color: #fff;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 10px;
+      }
+      .price {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+      .old-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 14px;
+      }
+      .save {
+        color: #ff5722;
+        margin-bottom: 20px;
+      }
+      .btn {
+        background: #ff5722;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background: #e64a19;
       }
     </style>
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-
-    <link rel="stylesheet" href="css/aos.css" />
-
-    <link rel="stylesheet" href="css/ionicons.min.css" />
-
-    <link rel="stylesheet" href="css/flaticon.css" />
-    <link rel="stylesheet" href="css/icomoon.css" />
-    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target"
-      id="ftco-navbar"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="index.html"><span>B</span>ouhenimed</a>
-        <button
-          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+  <body>
+    <div class="offer-container">
+      <div class="tabs">
+        <div class="tab active" data-tab="1">Active Followers</div>
+        <div class="tab" data-tab="2">Celebrity/Influencer</div>
+      </div>
+      <div class="offers active" data-content="1">
+        <div
+          class="offer"
+          data-price="2.97"
+          data-old-price="3.30"
+          data-save="0.33"
         >
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item">
-              <a href="#home-section" class="nav-link"><span>Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#about-section" class="nav-link"><span>About</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#resume-section" class="nav-link"><span>Resume</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#projects-section" class="nav-link"
-                ><span>Projects</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#contact-section" class="nav-link"
-                ><span>Contact</span></a
-              >
-            </li>
-          </ul>
+          <div>10 Followers</div>
+        </div>
+        <div
+          class="offer selected"
+          data-price="2.97"
+          data-old-price="3.30"
+          data-save="0.33"
+        >
+          <div>100 Followers</div>
+          <div class="badge">Save 10%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="4.80"
+          data-old-price="5.30"
+          data-save="0.50"
+        >
+          <div>250 Followers</div>
+          <div class="badge">Save 19%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="7.20"
+          data-old-price="10.00"
+          data-save="2.80"
+        >
+          <div>500 Followers</div>
+          <div class="badge">Save 28%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="12.60"
+          data-old-price="20.00"
+          data-save="7.40"
+        >
+          <div>1000 Followers</div>
+          <div class="badge">Save 37%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="20.00"
+          data-old-price="37.00"
+          data-save="17.00"
+        >
+          <div>2500 Followers</div>
+          <div class="badge">Save 46%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="30.00"
+          data-old-price="60.00"
+          data-save="30.00"
+        >
+          <div>5000 Followers</div>
+          <div class="badge">Save 55%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="50.00"
+          data-old-price="140.00"
+          data-save="90.00"
+        >
+          <div>10000 Followers</div>
+          <div class="badge">Save 64%</div>
+        </div>
+        <div
+          class="offer"
+          data-price="60.00"
+          data-old-price="300.00"
+          data-save="240.00"
+        >
+          <div>20000 Followers</div>
+          <div class="badge">Save 75%</div>
         </div>
       </div>
-    </nav>
-
-    <section class="ftco-section ftco-services">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2 class="mb-4">My Services</h2>
-            <p>Here are the services we provide</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center ftco-animate">
-              <!-- Random image, replace with your service image -->
-              <img
-                src="https://via.placeholder.com/300x200"
-                alt="Service Image"
-                class="service-image"
-              />
-              <div class="text">
-                <h3>Social Media</h3>
-                <p>
-                  Engage with your audience through strategic social media
-                  campaigns.
-                </p>
-                <div class="form-group">
-                  <select
-                    class="form-control service-dropdown"
-                    data-service="1"
-                  >
-                    <option value="">Select a Service</option>
-                    <option value="service1">Service 1 - $100</option>
-                    <option value="service2">Service 2 - $150</option>
-                    <option value="service3">Service 3 - $200</option>
-                  </select>
-                </div>
-                <div class="alert-message" data-alert="1">
-                  Please select a service.
-                </div>
-                <div class="fb-message" data-fb="1">
-                  You can buy it from our
-                  <a href="https://www.facebook.com">Facebook</a>.
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Repeat similar structure for other services -->
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center ftco-animate">
-              <!-- Random image, replace with your service image -->
-              <img
-                src="https://via.placeholder.com/300x200"
-                alt="Service Image"
-                class="service-image"
-              />
-              <div class="text">
-                <h3>Advertising</h3>
-                <p>
-                  Reach your target audience with effective advertising
-                  strategies.
-                </p>
-                <div class="form-group">
-                  <select class="form-control" id="serviceDropdown2">
-                    <option value="">Select a Service</option>
-                    <option value="service1">Service 1 - $100</option>
-                    <option value="service2">Service 2 - $150</option>
-                    <option value="service3">Service 3 - $200</option>
-                  </select>
-                </div>
-                <div class="alert-message" id="alertMessage2">
-                  Please select a service.
-                </div>
-                <div class="fb-message" id="fbMessage2">
-                  You can buy it from our
-                  <a href="https://www.facebook.com">Facebook</a>.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center ftco-animate">
-              <!-- Random image, replace with your service image -->
-              <img
-                src="https://via.placeholder.com/300x200"
-                alt="Service Image"
-                class="service-image"
-              />
-              <div class="text">
-                <h3>Graphic Design</h3>
-                <p>
-                  Create visually stunning graphics to enhance your brand's
-                  identity.
-                </p>
-                <div class="form-group">
-                  <select class="form-control" id="serviceDropdown3">
-                    <option value="">Select a Service</option>
-                    <option value="service1">Service 1 - $100</option>
-                    <option value="service2">Service 2 - $150</option>
-                    <option value="service3">Service 3 - $200</option>
-                  </select>
-                </div>
-                <div class="alert-message" id="alertMessage3">
-                  Please select a service.
-                </div>
-                <div class="fb-message" id="fbMessage3">
-                  You can buy it from our
-                  <a href="https://www.facebook.com">Facebook</a>.
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="offers" data-content="2">
+        <!-- You can add offers for the second tab here -->
+        <div
+          class="offer"
+          data-price="5.00"
+          data-old-price="10.00"
+          data-save="5.00"
+        >
+          <div>50 Followers</div>
+          <div class="badge">Save 50%</div>
         </div>
       </div>
-    </section>
+      <div class="price">
+        dt <span id="current-price">2.97</span>
+        <span class="old-price">dt 3.30</span>
+      </div>
+      <div class="save">You Save dt <span id="save-amount">0.33</span></div>
+      <button class="btn">BUY NOW</button>
+    </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const serviceDropdowns = document.querySelectorAll(".service-dropdown");
-        serviceDropdowns.forEach(function (dropdown) {
-          dropdown.addEventListener("change", function () {
-            const serviceNumber = this.getAttribute("data-service");
-            const alertMessage = document.querySelector(
-              `.alert-message[data-alert="${serviceNumber}"]`
-            );
-            const fbMessage = document.querySelector(
-              `.fb-message[data-fb="${serviceNumber}"]`
-            );
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
 
-            if (this.value === "") {
-              alertMessage.style.display = "block";
-              fbMessage.style.display = "none";
-            } else {
-              alertMessage.style.display = "none";
-              fbMessage.style.display = "block";
+          document.querySelectorAll(".offers").forEach((content) => {
+            content.classList.remove("active");
+            if (
+              content.getAttribute("data-content") ===
+              tab.getAttribute("data-tab")
+            ) {
+              content.classList.add("active");
             }
           });
         });
       });
-    </script>
 
-    <footer class="ftco-footer ftco-section">
-      <div class="col-md-12 text-center">
-        <p>
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          bouhenimohamed
-        </p>
-      </div>
-    </footer>
+      document.querySelectorAll(".offer").forEach((offer) => {
+        offer.addEventListener("click", () => {
+          document
+            .querySelectorAll(".offer")
+            .forEach((o) => o.classList.remove("selected"));
+          offer.classList.add("selected");
 
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen">
-      <svg class="circular" width="48px" height="48px">
-        <circle
-          class="path-bg"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke="#eeeeee"
-        />
-        <circle
-          class="path"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke-miterlimit="10"
-          stroke="#F96D00"
-        />
-      </svg>
-    </div>
+          const price = offer.getAttribute("data-price");
+          const oldPrice = offer.getAttribute("data-old-price");
+          const saveAmount = offer.getAttribute("data-save");
 
-    <button id="wifiButton">Connect to Wi-Fi</button>
-
-    <script>
-      document
-        .getElementById("wifiButton")
-        .addEventListener("click", function () {
-          // This feature is supported only on HTTPS websites and in browsers that support the Web Bluetooth API.
-          if (navigator.bluetooth) {
-            const ssid = "Redmi";
-            const password = "123456789com";
-
-            // Connect to Wi-Fi (This is a simplified version. Actual implementation may vary.)
-            navigator.bluetooth
-              .requestDevice({
-                filters: [
-                  {
-                    services: ["wifi"],
-                  },
-                ],
-              })
-              .then((device) => {
-                return device.gatt.connect();
-              })
-              .then((server) => {
-                return server.getPrimaryService("wifi");
-              })
-              .then((service) => {
-                return service.getCharacteristic("ssid");
-              })
-              .then((characteristic) => {
-                let enc = new TextEncoder();
-                return characteristic.writeValue(enc.encode(ssid));
-              })
-              .then(() => {
-                return service.getCharacteristic("password");
-              })
-              .then((characteristic) => {
-                let enc = new TextEncoder();
-                return characteristic.writeValue(enc.encode(password));
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          } else {
-            alert("Your browser does not support the Web Bluetooth API");
-          }
+          document.getElementById("current-price").innerText = price;
+          document.querySelector(".old-price").innerText = `dt ${oldPrice}`;
+          document.getElementById("save-amount").innerText = saveAmount;
         });
+      });
     </script>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
-
-    <script src="js/main.js"></script>
   </body>
 </html>
