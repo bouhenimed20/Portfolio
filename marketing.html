@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Service Des Abonnées</title>
+    <title>Bouheni Mohamed</title>
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-
-    <link rel="stylesheet" href="css/aos.css" />
-
-    <link rel="stylesheet" href="css/ionicons.min.css" />
-
-    <link rel="stylesheet" href="css/flaticon.css" />
-    <link rel="stylesheet" href="css/icomoon.css" />
-    <link rel="stylesheet" href="css/style.css" />
     <style>
-      .offe r-container {
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+        margin: 0;
+      }
+      .offer-container {
         background: #fff;
         border: 1px solid #e0e0e0;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 350px;
+        width: 80%;
+        max-width: 800px;
         padding: 20px;
         text-align: center;
       }
@@ -56,21 +52,31 @@
         display: none;
       }
       .offers.active {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
       }
       .offer {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 30%;
-        margin: 5px;
+        min-width: 120px;
+        margin: 10px;
         padding: 20px;
         border: 1px solid #e0e0e0;
         border-radius: 4px;
         cursor: pointer;
         position: relative;
+        transition: transform 0.2s;
       }
       .offer.selected {
         border-color: #007bff;
         background-color: #ffebee;
+      }
+      .offer:hover {
+        transform: scale(1.05);
       }
       .badge {
         position: absolute;
@@ -100,148 +106,115 @@
         color: #fff;
         padding: 10px 20px;
         border: none;
-        border-radius: 4px;
+        border-radius: 55px;
         cursor: pointer;
         font-size: 16px;
+        height: 50px;
+        width: 70%;
+        min-width: 120px;
+        margin: 10px;
       }
       .btn:hover {
-        background: #007bff;
+        background: #0056b3;
+      }
+      @media (max-width: 768px) {
+        .offer-container {
+          width: 90%;
+        }
+        .offer {
+          width: 45%;
+        }
+      }
+      @media (max-width: 480px) {
+        .offer {
+          width: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target"
-      id="ftco-navbar"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="index.html"><span>B</span>ouhenimed</a>
-        <button
-          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item">
-              <a href="#home-section" class="nav-link"><span>Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#about-section" class="nav-link"><span>About</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#resume-section" class="nav-link"><span>Resume</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#projects-section" class="nav-link"
-                ><span>Projects</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#contact-section" class="nav-link"
-                ><span>Contact</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="marketing.html" class="nav-link"><span>SM</span></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
     <div class="offer-container">
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
       <div class="tabs">
         <div class="tab active" data-tab="1">Active Followers</div>
         <div class="tab" data-tab="2">Celebrity/Influencer</div>
       </div>
       <div class="offers active" data-content="1">
         <div
-          class="offer"
-          data-price="2.97"
-          data-old-price="3.30"
-          data-save="0.33"
+          class="offer selected"
+          data-price="5,00"
+          data-old-price="10,00"
+          data-save="5"
         >
-          <div>10 Followers</div>
+          <div>1000 Abonnées</div>
         </div>
         <div
-          class="offer selected"
-          data-price="2.97"
-          data-old-price="3.30"
-          data-save="0.33"
+          class="offer"
+          data-price="10,00"
+          data-old-price="20,00"
+          data-save="10"
         >
-          <div>100 Followers</div>
+          <div>2000 Abonnées</div>
           <div class="badge">Save 10%</div>
         </div>
         <div
           class="offer"
-          data-price="4.80"
-          data-old-price="5.30"
-          data-save="0.50"
+          data-price="15,00"
+          data-old-price="25,00"
+          data-save="10"
         >
-          <div>250 Followers</div>
-          <div class="badge">Save 19%</div>
+          <div>3000 Abonnées</div>
+          <div class="badge">Save 40%</div>
         </div>
         <div
           class="offer"
-          data-price="7.20"
-          data-old-price="10.00"
-          data-save="2.80"
+          data-price="25,00"
+          data-old-price="35,00"
+          data-save="15,00"
         >
-          <div>500 Followers</div>
+          <div>5000 Abonnées</div>
           <div class="badge">Save 28%</div>
         </div>
         <div
           class="offer"
-          data-price="12.60"
-          data-old-price="20.00"
-          data-save="7.40"
+          data-price="50,00"
+          data-old-price="80,00"
+          data-save="30,00"
         >
-          <div>1000 Followers</div>
+          <div>10000 Abonnées</div>
           <div class="badge">Save 37%</div>
         </div>
         <div
           class="offer"
-          data-price="20.00"
-          data-old-price="37.00"
-          data-save="17.00"
+          data-price="90,00"
+          data-old-price="120,00"
+          data-save="30,00"
         >
-          <div>2500 Followers</div>
+          <div>20000 Abonnées</div>
           <div class="badge">Save 46%</div>
         </div>
         <div
           class="offer"
-          data-price="30.00"
-          data-old-price="60.00"
-          data-save="30.00"
+          data-price="220,00"
+          data-old-price="290,00"
+          data-save="70,00"
         >
-          <div>5000 Followers</div>
+          <div>50000 Abonnées</div>
           <div class="badge">Save 55%</div>
         </div>
         <div
           class="offer"
-          data-price="50.00"
-          data-old-price="140.00"
-          data-save="90.00"
+          data-price="380,00"
+          data-old-price="450,00"
+          data-save="70,00"
         >
-          <div>10000 Followers</div>
+          <div>100000 Abonnées</div>
           <div class="badge">Save 64%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="60.00"
-          data-old-price="300.00"
-          data-save="240.00"
-        >
-          <div>20000 Followers</div>
-          <div class="badge">Save 75%</div>
         </div>
       </div>
       <div class="offers" data-content="2">
@@ -252,18 +225,17 @@
           data-old-price="10.00"
           data-save="5.00"
         >
-          <div>50 Followers</div>
+          <div>50 Abonnées</div>
           <div class="badge">Save 50%</div>
         </div>
       </div>
       <div class="price">
-        dt <span id="current-price">2.97</span>
-        <span class="old-price">dt 3.30</span>
+        <span id="current-price">5,00</span>dt
+        <span class="old-price">dt 10.00</span>
       </div>
-      <div class="save">You Save dt <span id="save-amount">0.33</span></div>
+      <div class="save">You Save <span id="save-amount">5,00</span>dt</div>
       <button class="btn">BUY NOW</button>
     </div>
-  </div>
 
     <script>
       document.querySelectorAll(".tab").forEach((tab) => {
