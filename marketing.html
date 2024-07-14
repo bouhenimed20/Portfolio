@@ -14,32 +14,99 @@
     />
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .navbar-logo {
+        color: black;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: auto;
+      }
+
+      .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+        color: black;
+      }
+
+      .side-menu {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .side-menu a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .side-menu a:hover {
+        color: #007bff;
+      }
+
+      .side-menu .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      .content {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 20px;
-        box-sizing: border-box;
         flex-direction: column;
+        padding: 20px;
       }
+
       .slider {
         position: relative;
         width: 100%;
         max-width: 800px;
         margin-bottom: 20px;
       }
+
       .slides {
         display: flex;
         overflow: hidden;
         border-radius: 8px;
       }
+
       .slides img {
         width: 100%;
         transition: transform 0.5s ease;
       }
+
       .slider-buttons {
         position: absolute;
         top: 50%;
@@ -48,6 +115,7 @@
         justify-content: space-between;
         transform: translateY(-50%);
       }
+
       .slider-button {
         background-color: rgba(0, 0, 0, 0.5);
         border: none;
@@ -55,9 +123,11 @@
         padding: 10px;
         cursor: pointer;
       }
+
       .slider-button:hover {
         background-color: rgba(0, 0, 0, 0.7);
       }
+
       .offer-container {
         background: #fff;
         border: 1px solid #e0e0e0;
@@ -67,13 +137,16 @@
         max-width: 800px;
         padding: 20px;
         text-align: center;
+        margin-top: 20px;
       }
+
       .tabs {
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
         flex-wrap: wrap;
       }
+
       .tab {
         flex: 1;
         padding: 10px;
@@ -81,18 +154,22 @@
         border-bottom: 2px solid transparent;
         text-align: center;
       }
+
       .tab.active {
         border-bottom: 2px solid #007bff;
         font-weight: bold;
       }
+
       .offers {
         display: none;
       }
+
       .offers.active {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
       }
+
       .offer {
         display: flex;
         flex-direction: column;
@@ -108,13 +185,16 @@
         position: relative;
         transition: transform 0.2s;
       }
+
       .offer.selected {
         border-color: #007bff;
         background-color: #ffebee;
       }
+
       .offer:hover {
         transform: scale(1.05);
       }
+
       .badge {
         position: absolute;
         top: 5px;
@@ -125,19 +205,23 @@
         border-radius: 3px;
         font-size: 10px;
       }
+
       .price {
         font-size: 24px;
         margin: 20px 0;
       }
+
       .old-price {
         text-decoration: line-through;
         color: #888;
         font-size: 14px;
       }
+
       .save {
         color: #007bff;
         margin-bottom: 20px;
       }
+
       .btn {
         background: #007bff;
         color: #fff;
@@ -151,17 +235,25 @@
         min-width: 120px;
         margin: 10px;
       }
+
       .btn:hover {
         background: #0056b3;
       }
+
       @media (max-width: 768px) {
         .offer-container {
           width: 100%;
         }
+
         .offer {
           width: 45%;
         }
+
+        .side-menu {
+          width: 0;
+        }
       }
+
       @media (max-width: 480px) {
         .offer {
           width: 100%;
@@ -170,149 +262,164 @@
     </style>
   </head>
   <body>
-    <div class="slider">
-      <div class="slides">
-        <img
-          src="https://cmgventures.com/wp-content/uploads/2018/04/instagram-banner-01.png"
-          alt="Slide 1"
-        />
-        <img src="image2.jpg" alt="Slide 2" />
-        <img src="image3.jpg" alt="Slide 3" />
-      </div>
-      <div class="slider-buttons">
-        <button class="slider-button" id="prev">&#10094;</button>
-        <button class="slider-button" id="next">&#10095;</button>
-      </div>
+    <div class="navbar">
+      <span class="menu-icon" onclick="openMenu()">&#9776;</span>
+      <div class="navbar-logo">Bouheni Mohamed</div>
     </div>
-    <div class="offer-container">
-      <div class="tabs">
-        <div class="tab active" data-tab="1">Instagram Followers</div>
-        <div class="tab" data-tab="2">Instagram Likes</div>
-        <div class="tab" data-tab="3">Instagram Views</div>
-      </div>
-      <div class="offers active" data-content="1">
-        <div
-          class="offer selected"
-          data-price="5.00"
-          data-old-price="10.00"
-          data-save="5.00"
-        >
-          <div>1000 Followers</div>
-          <div class="badge">Save 50%</div>
+    <div id="side-menu" class="side-menu">
+      <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()"
+        >&times;</a
+      >
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="content">
+      <div class="slider">
+        <div class="slides">
+          <img
+            src="https://cmgventures.com/wp-content/uploads/2018/04/instagram-banner-01.png"
+            alt="Slide 1"
+          />
+          <img src="image2.jpg" alt="Slide 2" />
+          <img src="image3.jpg" alt="Slide 3" />
         </div>
-        <div
-          class="offer"
-          data-price="10.00"
-          data-old-price="20.00"
-          data-save="10.00"
-        >
-          <div>2000 Followers</div>
-          <div class="badge">Save 50%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="25.00"
-          data-old-price="35.00"
-          data-save="15.00"
-        >
-          <div>5000 Followers</div>
-          <div class="badge">Save 50%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="50.00"
-          data-old-price="80.00"
-          data-save="30.00"
-        >
-          <div>10000 Followers</div>
-          <div class="badge">Save 50%</div>
+        <div class="slider-buttons">
+          <button class="slider-button" id="prev">&#10094;</button>
+          <button class="slider-button" id="next">&#10095;</button>
         </div>
       </div>
-      <div class="offers" data-content="2">
-        <div
-          class="offer"
-          data-price="2.00"
-          data-old-price="4.00"
-          data-save="2.00"
-        >
-          <div>100 Likes</div>
-          <div class="badge">Save 50%</div>
+      <div class="offer-container">
+        <div class="tabs">
+          <div class="tab active" data-tab="1">Instagram Followers</div>
+          <div class="tab" data-tab="2">Instagram Likes</div>
+          <div class="tab" data-tab="3">Instagram Views</div>
         </div>
-        <div
-          class="offer"
-          data-price="8.00"
-          data-old-price="16.00"
-          data-save="8.00"
-        >
-          <div>500 Likes</div>
-          <div class="badge">Save 50%</div>
+        <div class="offers active" data-content="1">
+          <div
+            class="offer selected"
+            data-price="5.00"
+            data-old-price="10.00"
+            data-save="5.00"
+          >
+            <div>1000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="10.00"
+            data-old-price="20.00"
+            data-save="10.00"
+          >
+            <div>2000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="25.00"
+            data-old-price="35.00"
+            data-save="15.00"
+          >
+            <div>5000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="50.00"
+            data-old-price="80.00"
+            data-save="30.00"
+          >
+            <div>10000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
         </div>
-        <div
-          class="offer"
-          data-price="15.00"
-          data-old-price="30.00"
-          data-save="15.00"
-        >
-          <div>1000 Likes</div>
-          <div class="badge">Save 50%</div>
+        <div class="offers" data-content="2">
+          <div
+            class="offer"
+            data-price="8.00"
+            data-old-price="16.00"
+            data-save="8.00"
+          >
+            <div>500 Likes</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="15.00"
+            data-old-price="30.00"
+            data-save="15.00"
+          >
+            <div>1000 Likes</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="25.00"
+            data-old-price="50.00"
+            data-save="25.00"
+          >
+            <div>2000 Likes</div>
+            <div class="badge">Save 50%</div>
+          </div>
         </div>
-        <div
-          class="offer"
-          data-price="25.00"
-          data-old-price="50.00"
-          data-save="25.00"
-        >
-          <div>2000 Likes</div>
-          <div class="badge">Save 50%</div>
+        <div class="offers" data-content="3">
+          <div
+            class="offer"
+            data-price="5.00"
+            data-old-price="10.00"
+            data-save="5.00"
+          >
+            <div>1000 Views</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="10.00"
+            data-old-price="20.00"
+            data-save="10.00"
+          >
+            <div>2000 Views</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="25.00"
+            data-old-price="50.00"
+            data-save="25.00"
+          >
+            <div>5000 Views</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="30.00"
+            data-old-price="60.00"
+            data-save="30.00"
+          >
+            <div>10000 Views</div>
+            <div class="badge">Save 50%</div>
+          </div>
         </div>
+        <div class="price">
+          <span id="current-price">5.00</span>dt
+          <span class="old-price">dt 10.00</span>
+        </div>
+        <div class="save">You Save <span id="save-amount">5.00</span>dt</div>
+        <button class="btn">BUY NOW</button>
       </div>
-      <div class="offers" data-content="3">
-        <div
-          class="offer"
-          data-price="3.00"
-          data-old-price="6.00"
-          data-save="3.00"
-        >
-          <div>500 Views</div>
-          <div class="badge">Save 50%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="6.00"
-          data-old-price="12.00"
-          data-save="6.00"
-        >
-          <div>1000 Views</div>
-          <div class="badge">Save 50%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="20.00"
-          data-old-price="40.00"
-          data-save="20.00"
-        >
-          <div>5000 Views</div>
-          <div class="badge">Save 50%</div>
-        </div>
-        <div
-          class="offer"
-          data-price="30.00"
-          data-old-price="60.00"
-          data-save="30.00"
-        >
-          <div>10000 Views</div>
-          <div class="badge">Save 50%</div>
-        </div>
-      </div>
-      <div class="price">
-        <span id="current-price">5.00</span>dt
-        <span class="old-price">dt 10.00</span>
-      </div>
-      <div class="save">You Save <span id="save-amount">5.00</span>dt</div>
-      <button class="btn">BUY NOW</button>
     </div>
 
     <script>
+      function openMenu() {
+        document.getElementById("side-menu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("side-menu").style.width = "0";
+      }
+
       let currentSlide = 0;
       const slides = document.querySelectorAll(".slides img");
       const totalSlides = slides.length;
