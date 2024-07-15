@@ -219,6 +219,29 @@
         background: #0056b3;
       }
 
+      .sticky-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .sticky-footer .old-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
       @media (max-width: 768px) {
         .offer-container {
           width: 100%;
@@ -258,11 +281,9 @@
     <div class="content">
       <div class="slider">
         <div class="slides">
-          <img src="../images/instagram-banner-01.png" />
-        </div>
-        <div class="slider-buttons">
-          <span id="prev"></span>
-          <span id="next"></span>
+          <a href="https://www.instagram.com">
+            <img src="../images/instagram-banner-01.png" alt="Slide 1" />
+          </a>
         </div>
       </div>
       <div class="offer-container">
@@ -294,28 +315,10 @@
           <div
             class="offer"
             data-price="50.00"
-            data-old-price="80.00"
-            data-save="30.00"
+            data-old-price="75.00"
+            data-save="25.00"
           >
             <div>10000 Abonnés</div>
-            <div class="badge">Save 50%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="220.00"
-            data-old-price="270.00"
-            data-save="50.00"
-          >
-            <div>50000 Abonnés</div>
-            <div class="badge">Save 50%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="380.00"
-            data-old-price="420.00"
-            data-save="40.00"
-          >
-            <div>100000 Abonnés</div>
             <div class="badge">Save 50%</div>
           </div>
         </div>
@@ -323,11 +326,11 @@
           <div
             class="offer"
             data-price="5.00"
-            data-old-price="8.00"
-            data-save="3.00"
+            data-old-price="10.00"
+            data-save="5.00"
           >
-            <div>1000 J'aimes</div>
-            <div class="badge">Save 30%</div>
+            <div>500 J'aimes</div>
+            <div class="badge">Save 50%</div>
           </div>
           <div
             class="offer"
@@ -335,54 +338,27 @@
             data-old-price="20.00"
             data-save="10.00"
           >
-            <div>3000 J'aimes</div>
+            <div>1000 J'aimes</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
             class="offer"
-            data-price="30.00"
-            data-old-price="45.00"
-            data-save="15.00"
+            data-price="20.00"
+            data-old-price="40.00"
+            data-save="20.00"
           >
-            <div>10000 J'aimes</div>
-            <div class="badge">Save 40%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="50.00"
-            data-old-price="75.00"
-            data-save="25.00"
-          >
-            <div>20000 J'aimes</div>
-            <div class="badge">Save 40%</div>
+            <div>2000 J'aimes</div>
+            <div class="badge">Save 50%</div>
           </div>
         </div>
         <div class="offers" data-content="3">
           <div
             class="offer"
-            data-price="5.00"
-            data-old-price="10.00"
-            data-save="5.00"
+            data-price="15.00"
+            data-old-price="30.00"
+            data-save="15.00"
           >
-            <div>1000 vues</div>
-            <div class="badge">Save 50%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="10.00"
-            data-old-price="20.00"
-            data-save="10.00"
-          >
-            <div>2000 vues</div>
-            <div class="badge">Save 50%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="25.00"
-            data-old-price="50.00"
-            data-save="25.00"
-          >
-            <div>5000 vues</div>
+            <div>2000 Vues</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
@@ -391,17 +367,25 @@
             data-old-price="60.00"
             data-save="30.00"
           >
-            <div>10000 vues</div>
+            <div>4000 Vues</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="50.00"
+            data-old-price="100.00"
+            data-save="50.00"
+          >
+            <div>10000 Vues</div>
             <div class="badge">Save 50%</div>
           </div>
         </div>
-        <div class="price">
-          <span id="current-price">10.00</span>dt
-          <span class="old-price">dt 15.00</span>
-        </div>
-        <div class="save">You Save <span id="save-amount">5.00</span>dt</div>
-        <button class="btn">Acheter maintenant</button>
       </div>
+    </div>
+
+    <div class="sticky-footer">
+      <span id="footer-price">10.00dt</span>
+      <span class="old-price">dt 15.00</span>
     </div>
 
     <script>
@@ -413,55 +397,32 @@
         document.getElementById("side-menu").style.width = "0";
       }
 
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".slides img");
-      const totalSlides = slides.length;
+      const tabs = document.querySelectorAll(".tab");
+      const offers = document.querySelectorAll(".offers");
 
-      document.getElementById("next").addEventListener("click", () => {
-        slides[currentSlide].style.transform = "translateX(-100%)";
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slides[currentSlide].style.transform = "translateX(0)";
-      });
-
-      document.getElementById("prev").addEventListener("click", () => {
-        slides[currentSlide].style.transform = "translateX(100%)";
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        slides[currentSlide].style.transform = "translateX(0)";
-      });
-
-      document.querySelectorAll(".tab").forEach((tab) => {
+      tabs.forEach((tab, index) => {
         tab.addEventListener("click", () => {
-          document
-            .querySelectorAll(".tab")
-            .forEach((t) => t.classList.remove("active"));
+          tabs.forEach((tab) => tab.classList.remove("active"));
           tab.classList.add("active");
-
-          document.querySelectorAll(".offers").forEach((content) => {
-            content.classList.remove("active");
-            if (
-              content.getAttribute("data-content") ===
-              tab.getAttribute("data-tab")
-            ) {
-              content.classList.add("active");
-            }
-          });
+          offers.forEach((offer) => offer.classList.remove("active"));
+          offers[index].classList.add("active");
         });
       });
 
-      document.querySelectorAll(".offer").forEach((offer) => {
+      const offerElements = document.querySelectorAll(".offer");
+      const stickyFooter = document.getElementById("sticky-footer");
+      const footerPrice = document.getElementById("footer-price");
+
+      offerElements.forEach((offer) => {
         offer.addEventListener("click", () => {
-          document
-            .querySelectorAll(".offer")
-            .forEach((o) => o.classList.remove("selected"));
+          offerElements.forEach((el) => el.classList.remove("selected"));
           offer.classList.add("selected");
 
           const price = offer.getAttribute("data-price");
-          const oldPrice = offer.getAttribute("data-old-price");
-          const saveAmount = offer.getAttribute("data-save");
 
-          document.getElementById("current-price").innerText = price;
-          document.querySelector(".old-price").innerText = `dt ${oldPrice}`;
-          document.getElementById("save-amount").innerText = saveAmount;
+          footerPrice.innerText = price + " DT";
+
+          stickyFooter.style.display = "flex";
         });
       });
     </script>
