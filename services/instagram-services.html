@@ -222,6 +222,7 @@
             .sticky-footer {
           position: fixed;
           bottom: 0;
+          left: 0;
           width: 100%;
           background-color: white;
           box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
@@ -414,6 +415,9 @@
       const offerElements = document.querySelectorAll(".offer");
       const stickyFooter = document.getElementById("sticky-footer");
       const footerPrice = document.getElementById("footer-price");
+      const footerOldPrice = document.querySelector(
+        ".sticky-footer .old-price"
+      );
 
       offerElements.forEach((offer) => {
         offer.addEventListener("click", () => {
@@ -421,8 +425,10 @@
           offer.classList.add("selected");
 
           const price = offer.getAttribute("data-price");
+          const oldPrice = offer.getAttribute("data-old-price");
 
           footerPrice.innerText = price + " DT";
+          footerOldPrice.innerText = "dt " + oldPrice;
 
           stickyFooter.style.display = "flex";
         });
