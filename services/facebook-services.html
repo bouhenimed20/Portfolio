@@ -188,6 +188,7 @@
       .price {
         font-size: 24px;
         margin: 20px 0;
+        font-weight: bold;
       }
 
       .old-price {
@@ -258,33 +259,149 @@
     <div class="content">
       <div class="slider">
         <div class="slides">
-          <a href="./services/instagram-services">
-          <img src="images/instagram-banner-01.png" alt="Slide 1" />
+          <img src="../images/facebook-banner-01.png" />
         </div>
-        <p></p>
-        <p></p>
+        <div class="slider-buttons">
+          <span id="prev"></span>
+          <span id="next"></span>
+        </div>
+      </div>
+      <div class="offer-container">
+        <div class="tabs">
+          <div class="tab active" data-tab="1">Instagram Followers</div>
+          <div class="tab" data-tab="2">Instagram J'aimes</div>
+          <div class="tab" data-tab="3">Instagram vues</div>
+        </div>
+        <div class="offers active" data-content="1">
+          <div
+            class="offer selected"
+            data-price="10.00"
+            data-old-price="10.00"
+            data-save="5.00"
+          >
+            <div>1500 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
 
-        <div class="slides">
-          <a href="./services/facebook-services">
-          <img src="images/facebook-banner-01.png" alt="Slide 1" />
+          <div
+            class="offer"
+            data-price="25.00"
+            data-old-price="35.00"
+            data-save="15.00"
+          >
+            <div>5000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="50.00"
+            data-old-price="80.00"
+            data-save="30.00"
+          >
+            <div>10000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="220.00"
+            data-old-price="270.00"
+            data-save="50.00"
+          >
+            <div>50000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="380.00"
+            data-old-price="420.00"
+            data-save="40.00"
+          >
+            <div>100000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
         </div>
-        <p></p>
-        <p></p>
-        <div class="slides">
-          <img src="images/tiktok-banner-01.png" alt="Slide 1" />
+        <div class="offers" data-content="2">
+          <div
+            class="offer"
+            data-price="5.00"
+            data-old-price="8.00"
+            data-save="3.00"
+          >
+            <div>1000 J'aimes</div>
+            <div class="badge">Save 30%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="10.00"
+            data-old-price="20.00"
+            data-save="10.00"
+          >
+            <div>3000 J'aimes</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="30.00"
+            data-old-price="45.00"
+            data-save="15.00"
+          >
+            <div>10000 J'aimes</div>
+            <div class="badge">Save 40%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="50.00"
+            data-old-price="75.00"
+            data-save="25.00"
+          >
+            <div>20000 J'aimes</div>
+            <div class="badge">Save 40%</div>
+          </div>
         </div>
-        <p></p>
-        <p></p>
-        <div class="slides">
-          <img src="images/sponsoring.png" alt="Slide 1" />
+        <div class="offers" data-content="3">
+          <div
+            class="offer"
+            data-price="5.00"
+            data-old-price="10.00"
+            data-save="5.00"
+          >
+            <div>2000 vues</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="10.00"
+            data-old-price="20.00"
+            data-save="10.00"
+          >
+            <div>5000 vues</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="25.00"
+            data-old-price="50.00"
+            data-save="25.00"
+          >
+            <div>20000 vues</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="35.00"
+            data-old-price="60.00"
+            data-save="25.00"
+          >
+            <div>30000 vues</div>
+            <div class="badge">Save 50%</div>
+          </div>
         </div>
-        <p></p>
-        <p></p>
-        <div class="slides">
-          <img src="images/deisgn.png" alt="Slide 1" />
+        <div class="price">
+          <span id="current-price">10.00</span>dt
+          <span class="old-price">dt 15.00</span>
         </div>
-        <p></p>
-        <p></p>
+        <div class="save">You Save <span id="save-amount">5.00</span>dt</div>
+        <button class="btn">Acheter maintenant</button>
       </div>
     </div>
 
@@ -311,6 +428,25 @@
         slides[currentSlide].style.transform = "translateX(100%)";
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         slides[currentSlide].style.transform = "translateX(0)";
+      });
+
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          document.querySelectorAll(".offers").forEach((content) => {
+            content.classList.remove("active");
+            if (
+              content.getAttribute("data-content") ===
+              tab.getAttribute("data-tab")
+            ) {
+              content.classList.add("active");
+            }
+          });
+        });
       });
 
       document.querySelectorAll(".offer").forEach((offer) => {
