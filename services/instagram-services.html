@@ -18,7 +18,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f2f2f2;
+        background-color: #f5f5f5;
       }
 
       .navbar {
@@ -188,6 +188,7 @@
       .price {
         font-size: 24px;
         margin: 20px 0;
+        font-weight: bold;
       }
 
       .old-price {
@@ -217,29 +218,6 @@
 
       .btn:hover {
         background: #0056b3;
-      }
-
-      .sticky-footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-        padding: 10px 0;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 1000;
-      }
-
-      .sticky-footer .old-price {
-        text-decoration: line-through;
-        color: #888;
-        font-size: 16px;
-        font-weight: normal;
       }
 
       @media (max-width: 768px) {
@@ -281,14 +259,16 @@
     <div class="content">
       <div class="slider">
         <div class="slides">
-          <a href="https://www.instagram.com">
-            <img src="../images/instagram-banner-01.png" alt="Slide 1" />
-          </a>
+          <img src="../images/instagram-banner-01.png" />
+        </div>
+        <div class="slider-buttons">
+          <span id="prev"></span>
+          <span id="next"></span>
         </div>
       </div>
       <div class="offer-container">
         <div class="tabs">
-          <div class="tab active" data-tab="1">Instagram Abonnés</div>
+          <div class="tab active" data-tab="1">Instagram Followers</div>
           <div class="tab" data-tab="2">Instagram J'aimes</div>
           <div class="tab" data-tab="3">Instagram vues</div>
         </div>
@@ -299,7 +279,7 @@
             data-old-price="10.00"
             data-save="5.00"
           >
-            <div>1500 Abonnés</div>
+            <div>1500 Followers</div>
             <div class="badge">Save 50%</div>
           </div>
 
@@ -309,16 +289,34 @@
             data-old-price="35.00"
             data-save="15.00"
           >
-            <div>5000 Abonnés</div>
+            <div>5000 Followers</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
             class="offer"
             data-price="50.00"
-            data-old-price="75.00"
-            data-save="25.00"
+            data-old-price="80.00"
+            data-save="30.00"
           >
-            <div>10000 Abonnés</div>
+            <div>10000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="220.00"
+            data-old-price="270.00"
+            data-save="50.00"
+          >
+            <div>50000 Followers</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="380.00"
+            data-old-price="420.00"
+            data-save="40.00"
+          >
+            <div>100000 Followers</div>
             <div class="badge">Save 50%</div>
           </div>
         </div>
@@ -326,10 +324,48 @@
           <div
             class="offer"
             data-price="5.00"
+            data-old-price="8.00"
+            data-save="3.00"
+          >
+            <div>1000 J'aimes</div>
+            <div class="badge">Save 30%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="10.00"
+            data-old-price="20.00"
+            data-save="10.00"
+          >
+            <div>3000 J'aimes</div>
+            <div class="badge">Save 50%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="30.00"
+            data-old-price="45.00"
+            data-save="15.00"
+          >
+            <div>10000 J'aimes</div>
+            <div class="badge">Save 40%</div>
+          </div>
+          <div
+            class="offer"
+            data-price="50.00"
+            data-old-price="75.00"
+            data-save="25.00"
+          >
+            <div>20000 J'aimes</div>
+            <div class="badge">Save 40%</div>
+          </div>
+        </div>
+        <div class="offers" data-content="3">
+          <div
+            class="offer"
+            data-price="5.00"
             data-old-price="10.00"
             data-save="5.00"
           >
-            <div>500 J'aimes</div>
+            <div>1000 vues</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
@@ -338,27 +374,16 @@
             data-old-price="20.00"
             data-save="10.00"
           >
-            <div>1000 J'aimes</div>
+            <div>2000 vues</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
             class="offer"
-            data-price="20.00"
-            data-old-price="40.00"
-            data-save="20.00"
+            data-price="25.00"
+            data-old-price="50.00"
+            data-save="25.00"
           >
-            <div>2000 J'aimes</div>
-            <div class="badge">Save 50%</div>
-          </div>
-        </div>
-        <div class="offers" data-content="3">
-          <div
-            class="offer"
-            data-price="15.00"
-            data-old-price="30.00"
-            data-save="15.00"
-          >
-            <div>2000 Vues</div>
+            <div>5000 vues</div>
             <div class="badge">Save 50%</div>
           </div>
           <div
@@ -367,25 +392,17 @@
             data-old-price="60.00"
             data-save="30.00"
           >
-            <div>4000 Vues</div>
-            <div class="badge">Save 50%</div>
-          </div>
-          <div
-            class="offer"
-            data-price="50.00"
-            data-old-price="100.00"
-            data-save="50.00"
-          >
-            <div>10000 Vues</div>
+            <div>10000 vues</div>
             <div class="badge">Save 50%</div>
           </div>
         </div>
+        <div class="price">
+          <span id="current-price">10.00</span>dt
+          <span class="old-price">dt 15.00</span>
+        </div>
+        <div class="save">You Save <span id="save-amount">5.00</span>dt</div>
+        <button class="btn">Acheter maintenant</button>
       </div>
-    </div>
-
-    <div class="sticky-footer">
-      <span id="footer-price">10.00dt</span>
-      <span class="old-price">dt 15.00</span>
     </div>
 
     <script>
@@ -397,32 +414,55 @@
         document.getElementById("side-menu").style.width = "0";
       }
 
-      const tabs = document.querySelectorAll(".tab");
-      const offers = document.querySelectorAll(".offers");
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slides img");
+      const totalSlides = slides.length;
 
-      tabs.forEach((tab, index) => {
+      document.getElementById("next").addEventListener("click", () => {
+        slides[currentSlide].style.transform = "translateX(-100%)";
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slides[currentSlide].style.transform = "translateX(0)";
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        slides[currentSlide].style.transform = "translateX(100%)";
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        slides[currentSlide].style.transform = "translateX(0)";
+      });
+
+      document.querySelectorAll(".tab").forEach((tab) => {
         tab.addEventListener("click", () => {
-          tabs.forEach((tab) => tab.classList.remove("active"));
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
           tab.classList.add("active");
-          offers.forEach((offer) => offer.classList.remove("active"));
-          offers[index].classList.add("active");
+
+          document.querySelectorAll(".offers").forEach((content) => {
+            content.classList.remove("active");
+            if (
+              content.getAttribute("data-content") ===
+              tab.getAttribute("data-tab")
+            ) {
+              content.classList.add("active");
+            }
+          });
         });
       });
 
-      const offerElements = document.querySelectorAll(".offer");
-      const stickyFooter = document.getElementById("sticky-footer");
-      const footerPrice = document.getElementById("footer-price");
-
-      offerElements.forEach((offer) => {
+      document.querySelectorAll(".offer").forEach((offer) => {
         offer.addEventListener("click", () => {
-          offerElements.forEach((el) => el.classList.remove("selected"));
+          document
+            .querySelectorAll(".offer")
+            .forEach((o) => o.classList.remove("selected"));
           offer.classList.add("selected");
 
           const price = offer.getAttribute("data-price");
+          const oldPrice = offer.getAttribute("data-old-price");
+          const saveAmount = offer.getAttribute("data-save");
 
-          footerPrice.innerText = price + " DT";
-
-          stickyFooter.style.display = "flex";
+          document.getElementById("current-price").innerText = price;
+          document.querySelector(".old-price").innerText = `dt ${oldPrice}`;
+          document.getElementById("save-amount").innerText = saveAmount;
         });
       });
     </script>
