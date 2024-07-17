@@ -9,6 +9,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
+  width: 97, 5%;
   background-color: white;
   display: flex;
   align-items: center;
