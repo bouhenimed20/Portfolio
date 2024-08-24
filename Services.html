@@ -13,26 +13,37 @@
       rel="stylesheet"
     />
     <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-color: #f5f5f5;
+   body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 97, 5%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        width: 100%; /* Ensure the container takes up the full width */
+        max-width: 100%; /* Prevent the container from having extra space */
+        margin: 0; /* Remove any margin around the container */
       }
 
-      .navbar {
-        position: sticky;
-        top: 0;
-        width: 97.5%;
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-      }
+   
 
       .navbar-logo {
         color: black;
@@ -82,12 +93,6 @@
         margin-left: 50px;
       }
 
-      .container {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-      }
-
       .left-section {
         flex: 1;
         display: flex;
@@ -98,6 +103,31 @@
       .right-section {
         flex: 1;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%; /* Ensure the right section does not exceed container width */
+      }
+
+      .screenshot-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-top: 20px;
+        width: 100%; /* Ensure the slider takes up the full width */
+        max-width: 400px; /* Adjust this to control the width of the slider */
+      }
+
+      .screenshot-slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%; /* Ensure the slides take up the full width of the slider */
+      }
+
+      .screenshot-slides img {
+        width: 100%; /* Make sure each image takes up the full width of the slider */
+        flex-shrink: 0;
+        border-radius: 8px;
       }
 
       .slider {
@@ -286,7 +316,7 @@
     </div>
 
     <div class="container">
-      <div class="left-section">
+       <div class="left-section">
         <div class="slider">
           <div class="slides">
             <a href="./services/instagram-services">
@@ -318,21 +348,18 @@
           </div>
         </div>
       </div>
-      <div class="right-section">
-        <h1>Right Section Content</h1>
-        <p>This is the content on the right section of the page.</p>
-        <div class="new-slider">
-          <div class="new-slides">
-            <img src="images/example1.jpg" alt="Example 1" />
-          </div>
-          <div class="new-slides">
-            <img src="images/example2.jpg" alt="Example 2" />
-          </div>
-          <div class="new-slides">
-            <img src="images/example3.jpg" alt="Example 3" />
+     <div class="right-section">
+        <h1>Client Proof</h1>
+        <p>Below are some screenshots showing the results we've achieved for our clients:</p>
+        <div class="screenshot-slider">
+          <div class="screenshot-slides">
+            <img src="images/image_2.jpg" alt="Client Proof 1" />
+            <img src="images/screenshot2.jpg" alt="Client Proof 2" />
+            <img src="images/screenshot3.jpg" alt="Client Proof 3" />
+      
           </div>
         </div>
-    </div>
+      </div>  
 
     <script>
       function openMenu() {
@@ -375,6 +402,28 @@
           document.getElementById("save-amount").innerText = saveAmount;
         });
       });
+    </script>
+    <script>
+      (function () {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".screenshot-slides img");
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+          const sliderWidth =
+            document.querySelector(".screenshot-slider").offsetWidth;
+          document.querySelector(
+            ".screenshot-slides"
+          ).style.transform = `translateX(${-index * sliderWidth}px)`;
+        }
+
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 2000); // Change every 2 seconds
+      })();
     </script>
   </body>
 </html>
