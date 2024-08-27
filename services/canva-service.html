@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Services</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .new-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px;
+        background-color: #f8f9fa;
+      }
+
+      .text-content {
+        max-width: 50%;
+      }
+
+      .text-content h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .text-content p {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .primary-btn {
+        background-color: #1a1a1a;
+        color: #fff;
+      }
+
+      .secondary-btn {
+        background-color: #fff;
+        color: #1a1a1a;
+        border: 2px solid #1a1a1a;
+      }
+
+      .image-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .new-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .text-content,
+        .image-content {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <span class="menu-icon" onclick="openMenu()">&#9776;</span>
+    </div>
+    <div id="side-menu" class="side-menu">
+      <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()"
+        >&times;</a
+      >
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="new-section">
+      <div class="text-content">
+        <h1>Creating the best digital solutions for your business</h1>
+        <p>
+          Amet, fames enim vel nec elit aliquet vestibulum vitae tempus. Lacus
+          adipiscing vitae, aliquet lorem. Praesent nulla consequat mauris,
+          tristique elementum, aenean enim.
+        </p>
+        <div class="buttons">
+          <a href="#" class="btn primary-btn">Get in Touch</a>
+          <a href="#" class="btn secondary-btn">Watch Video ▶</a>
+        </div>
+      </div>
+      <div class="image-content">
+        <img src="/images/canvaimg.png" />
+      </div>
+    </div>
+
+    <script>
+      function openMenu() {
+        document.getElementById("side-menu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("side-menu").style.width = "0";
+      }
+
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slides img");
+      const totalSlides = slides.length;
+
+      document.getElementById("next").addEventListener("click", () => {
+        slides[currentSlide].style.transform = "translateX(-100%)";
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slides[currentSlide].style.transform = "translateX(0)";
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        slides[currentSlide].style.transform = "translateX(100%)";
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        slides[currentSlide].style.transform = "translateX(0)";
+      });
+
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          document.querySelectorAll(".offers").forEach((content) => {
+            content.classList.remove("active");
+            if (
+              content.getAttribute("data-content") ===
+              tab.getAttribute("data-tab")
+            ) {
+              content.classList.add("active");
+            }
+          });
+        });
+      });
+
+      document.querySelectorAll(".offer").forEach((offer) => {
+        offer.addEventListener("click", () => {
+          document
+            .querySelectorAll(".offer")
+            .forEach((o) => o.classList.remove("selected"));
+          offer.classList.add("selected");
+
+          const price = offer.getAttribute("data-price");
+          const oldPrice = offer.getAttribute("data-old-price");
+          const saveAmount = offer.getAttribute("data-save");
+
+          document.getElementById("current-price").innerText = price;
+          document.querySelector(".old-price").innerText = `dt ${oldPrice}`;
+          document.getElementById("save-amount").innerText = saveAmount;
+        });
+      });
+    </script>
+  </body>
+</html>
